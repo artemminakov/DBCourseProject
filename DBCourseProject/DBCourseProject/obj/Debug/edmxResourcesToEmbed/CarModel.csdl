@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Mileage" Type="Int32" />
+    <Property Name="RentalFees" Type="Int32" />
+    <Property Name="Capacity" Type="Int32" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contracts_dbo_Cars_CarId" FromRole="Cars" ToRole="Contracts" />
+  </EntityType>
+  <EntityType Name="Consultant">
+    <Key>
+      <PropertyRef Name="ConsultantId" />
+    </Key>
+    <Property Name="ConsultantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ConsultantName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NumberTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Experience" Type="Int32" />
+    <Property Name="Merit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contracts_dbo_Consultants_ConsultantId" FromRole="Consultants" ToRole="Contracts" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractId" />
+    </Key>
+    <Property Name="ContractId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="CarID" Type="Int32" Nullable="false" />
+    <Property Name="ConsultantID" Type="Int32" Nullable="false" />
+    <Property Name="Notres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiryDateLease" Type="DateTime" Precision="3" />
+    <Property Name="DateDrawingContract" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Car" Relationship="Self.FK_dbo_Contracts_dbo_Cars_CarId" FromRole="Contracts" ToRole="Cars" />
+    <NavigationProperty Name="Consultant" Relationship="Self.FK_dbo_Contracts_dbo_Consultants_ConsultantId" FromRole="Contracts" ToRole="Consultants" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_Contracts_dbo_Customers_CustomerId" FromRole="Contracts" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NumberTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreditCardNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateIssuanceRights" Type="DateTime" Precision="3" />
+    <Property Name="Characteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contracts_dbo_Customers_CustomerId" FromRole="Customers" ToRole="Contracts" />
+  </EntityType>
+  <Association Name="FK_dbo_Contracts_dbo_Cars_CarId">
+    <End Role="Cars" Type="Self.Car" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="CarId" />
+      </Principal>
+      <Dependent Role="Contracts">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Contracts_dbo_Consultants_ConsultantId">
+    <End Role="Consultants" Type="Self.Consultant" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultants">
+        <PropertyRef Name="ConsultantId" />
+      </Principal>
+      <Dependent Role="Contracts">
+        <PropertyRef Name="ConsultantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Contracts_dbo_Customers_CustomerId">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Contracts">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="Consultants" EntityType="Self.Consultant" />
+    <EntitySet Name="Contracts" EntityType="Self.Contract" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <AssociationSet Name="FK_dbo_Contracts_dbo_Cars_CarId" Association="Self.FK_dbo_Contracts_dbo_Cars_CarId">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="Contracts" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Contracts_dbo_Consultants_ConsultantId" Association="Self.FK_dbo_Contracts_dbo_Consultants_ConsultantId">
+      <End Role="Consultants" EntitySet="Consultants" />
+      <End Role="Contracts" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Contracts_dbo_Customers_CustomerId" Association="Self.FK_dbo_Contracts_dbo_Customers_CustomerId">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Contracts" EntitySet="Contracts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

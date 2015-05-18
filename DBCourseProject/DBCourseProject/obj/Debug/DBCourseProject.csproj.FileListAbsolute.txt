@@ -1,0 +1,17 @@
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\DBCourseProject.exe.config
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\DBCourseProject.exe
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\DBCourseProject.pdb
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\EntityFramework.dll
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\EntityFramework.xml
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.csprojResolveAssemblyReference.cache
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.Properties.Resources.resources
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.csproj.GenerateResource.Cache
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.exe
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.pdb
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.Form1.resources
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.AddCar.resources
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.AddConsultant.resources
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.AddContract.resources
+c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.AddCustomer.resources

@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarName" Type="nvarchar(max)" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="Color" Type="nvarchar(max)" />
+          <Property Name="Mileage" Type="int" />
+          <Property Name="RentalFees" Type="int" />
+          <Property Name="Capacity" Type="int" />
+        </EntityType>
+        <EntityType Name="Consultants">
+          <Key>
+            <PropertyRef Name="ConsultantId" />
+          </Key>
+          <Property Name="ConsultantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsultantName" Type="nvarchar(max)" />
+          <Property Name="NumberTel" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="Merit" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Contracts">
+          <Key>
+            <PropertyRef Name="ContractId" />
+          </Key>
+          <Property Name="ContractId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="CarID" Type="int" Nullable="false" />
+          <Property Name="ConsultantID" Type="int" Nullable="false" />
+          <Property Name="Notres" Type="nvarchar(max)" />
+          <Property Name="ExpiryDateLease" Type="datetime" />
+          <Property Name="DateDrawingContract" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar(max)" />
+          <Property Name="NumberTel" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="CreditCardNumber" Type="nvarchar(max)" />
+          <Property Name="DateIssuanceRights" Type="datetime" />
+          <Property Name="Characteristics" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Contracts_dbo_Cars_CarId">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="CarId" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contracts_dbo_Consultants_ConsultantId">
+          <End Role="Consultants" Type="Self.Consultants" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultants">
+              <PropertyRef Name="ConsultantId" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="ConsultantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contracts_dbo_Customers_CustomerId">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarsModelStoreContainer">
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consultants" EntityType="Self.Consultants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contracts" EntityType="Self.Contracts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Contracts_dbo_Cars_CarId" Association="Self.FK_dbo_Contracts_dbo_Cars_CarId">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contracts_dbo_Consultants_ConsultantId" Association="Self.FK_dbo_Contracts_dbo_Consultants_ConsultantId">
+            <End Role="Consultants" EntitySet="Consultants" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contracts_dbo_Customers_CustomerId" Association="Self.FK_dbo_Contracts_dbo_Customers_CustomerId">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mileage" Type="Int32" />
+          <Property Name="RentalFees" Type="Int32" />
+          <Property Name="Capacity" Type="Int32" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contracts_dbo_Cars_CarId" FromRole="Cars" ToRole="Contracts" />
+        </EntityType>
+        <EntityType Name="Consultant">
+          <Key>
+            <PropertyRef Name="ConsultantId" />
+          </Key>
+          <Property Name="ConsultantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsultantName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumberTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="Merit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contracts_dbo_Consultants_ConsultantId" FromRole="Consultants" ToRole="Contracts" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractId" />
+          </Key>
+          <Property Name="ContractId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="CarID" Type="Int32" Nullable="false" />
+          <Property Name="ConsultantID" Type="Int32" Nullable="false" />
+          <Property Name="Notres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExpiryDateLease" Type="DateTime" Precision="3" />
+          <Property Name="DateDrawingContract" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_dbo_Contracts_dbo_Cars_CarId" FromRole="Contracts" ToRole="Cars" />
+          <NavigationProperty Name="Consultant" Relationship="Self.FK_dbo_Contracts_dbo_Consultants_ConsultantId" FromRole="Contracts" ToRole="Consultants" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_Contracts_dbo_Customers_CustomerId" FromRole="Contracts" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumberTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreditCardNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateIssuanceRights" Type="DateTime" Precision="3" />
+          <Property Name="Characteristics" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="Self.FK_dbo_Contracts_dbo_Customers_CustomerId" FromRole="Customers" ToRole="Contracts" />
+        </EntityType>
+        <Association Name="FK_dbo_Contracts_dbo_Cars_CarId">
+          <End Role="Cars" Type="Self.Car" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="CarId" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contracts_dbo_Consultants_ConsultantId">
+          <End Role="Consultants" Type="Self.Consultant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consultants">
+              <PropertyRef Name="ConsultantId" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="ConsultantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Contracts_dbo_Customers_CustomerId">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Contracts" Type="Self.Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cars" EntityType="Self.Car" />
+          <EntitySet Name="Consultants" EntityType="Self.Consultant" />
+          <EntitySet Name="Contracts" EntityType="Self.Contract" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <AssociationSet Name="FK_dbo_Contracts_dbo_Cars_CarId" Association="Self.FK_dbo_Contracts_dbo_Cars_CarId">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contracts_dbo_Consultants_ConsultantId" Association="Self.FK_dbo_Contracts_dbo_Consultants_ConsultantId">
+            <End Role="Consultants" EntitySet="Consultants" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Contracts_dbo_Customers_CustomerId" Association="Self.FK_dbo_Contracts_dbo_Customers_CustomerId">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarsModelStoreContainer" CdmEntityContainer="CarContext">
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="CarsModel.Car">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="RentalFees" ColumnName="RentalFees" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consultants">
+            <EntityTypeMapping TypeName="CarsModel.Consultant">
+              <MappingFragment StoreEntitySet="Consultants">
+                <ScalarProperty Name="ConsultantId" ColumnName="ConsultantId" />
+                <ScalarProperty Name="ConsultantName" ColumnName="ConsultantName" />
+                <ScalarProperty Name="NumberTel" ColumnName="NumberTel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Merit" ColumnName="Merit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="CarsModel.Contract">
+              <MappingFragment StoreEntitySet="Contracts">
+                <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="ConsultantID" ColumnName="ConsultantID" />
+                <ScalarProperty Name="Notres" ColumnName="Notres" />
+                <ScalarProperty Name="ExpiryDateLease" ColumnName="ExpiryDateLease" />
+                <ScalarProperty Name="DateDrawingContract" ColumnName="DateDrawingContract" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="CarsModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="NumberTel" ColumnName="NumberTel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+                <ScalarProperty Name="DateIssuanceRights" ColumnName="DateIssuanceRights" />
+                <ScalarProperty Name="Characteristics" ColumnName="Characteristics" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
