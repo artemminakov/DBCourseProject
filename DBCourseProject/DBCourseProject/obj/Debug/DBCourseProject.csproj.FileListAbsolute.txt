@@ -15,3 +15,8 @@ c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCoursePr
 c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.AddConsultant.resources
 c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.AddContract.resources
 c:\users\frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.AddCustomer.resources
+C:\Users\Frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\Excel.dll
+C:\Users\Frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\bin\Debug\Excel.pdb
+C:\Users\Frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.SQL_QueryForm.resources
+C:\Users\Frozer\documents\visual studio 2012\Projects\DBCourseProject\DBCourseProject\obj\Debug\DBCourseProject.ReportForm.resources

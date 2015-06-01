@@ -12,6 +12,14 @@ namespace DBCourseProject
 {
     public partial class AddContract : Form
     {
+
+        private Form1 mainForm;
+        public AddContract(Form1 _mainForm)
+        {
+            InitializeComponent();
+            mainForm = _mainForm;
+        }
+
         public AddContract()
         {
             InitializeComponent();

@@ -12,12 +12,7 @@ namespace DBCourseProject
 {
     partial class AddCar : Form
     {
-        private Form1 mainForm;
-        public AddCar(Form1 _mainForm)
-        {
-            InitializeComponent();
-            mainForm = _mainForm;
-        }
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>

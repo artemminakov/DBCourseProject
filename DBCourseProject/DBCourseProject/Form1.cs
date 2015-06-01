@@ -9,27 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using Microsoft.Office.Interop.Excel;
 
 namespace DBCourseProject
 {
     public partial class Form1 : Form
     {
         const string ConnectionString = "Data Source=(localdb)\\v11.0;Initial Catalog=Cars;Integrated Security=True";
-        //const string ConnectionString = "Data Source=(localdb)\v11.0;Initial Catalog=Cars;Integrated Security=True";
+        private int[] array = {3, 0, 1, 3, 9, 1, 0, 0, 0, 0, 0, 0};
 
         AddCar addCar_form;
         AddConsultant addConsultant_form;
         AddCustomer addCustomer_form;
         AddContract addContract_form;
+        SQL_QueryForm sqlQuery_form;
         CarContext _context;
 
         public Form1()
         {
             InitializeComponent();
-            addCar_form = new AddCar(this);
-            addConsultant_form = new AddConsultant(this);
-            addCustomer_form = new AddCustomer(this);
-            addContract_form = new AddContract(this);
 
         }
 
@@ -59,6 +57,8 @@ namespace DBCourseProject
                 _context.Consultants.Local.ToBindingList();
             this.customerBindingSource.DataSource =
                 _context.Customers.Local.ToBindingList();
+            //CheckDateCustomerRights();
+            //CheckCar();
             
         }
 
@@ -111,7 +111,8 @@ namespace DBCourseProject
         }
 
         private void автомобильToolStripMenuItem_Click(object sender, EventArgs e)
-        {      
+        {
+            addCar_form = new AddCar(this);
             if (addCar_form.ShowDialog() == DialogResult.OK)
             {
                 
@@ -120,6 +121,7 @@ namespace DBCourseProject
 
         private void консультантToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            addConsultant_form = new AddConsultant(this);
             if (addConsultant_form.ShowDialog() == DialogResult.OK)
             {
 
@@ -128,6 +130,7 @@ namespace DBCourseProject
 
         private void клиентToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            addCustomer_form = new AddCustomer(this);
             if (addCustomer_form.ShowDialog() == DialogResult.OK)
             {
 
@@ -136,6 +139,7 @@ namespace DBCourseProject
 
         private void контрактToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            addContract_form = new AddContract(this);
             if (addContract_form.ShowDialog() == DialogResult.OK)
             {
 
@@ -148,17 +152,13 @@ namespace DBCourseProject
             {
                 SqlConnection sqlconn = new SqlConnection(ConnectionString);
                  sqlconn.Open();
-                 string query = "SET IDENTITY_INSERT Cars ON";
-                 SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
-                 query = "INSERT INTO Cars(CarName, Model, Color, Mileage, RentalFees, Capacity) VALUES(" + "\'" + carName + "\'"
-                     + ", " + "\'" + model + "\'" + ", " + "\'" + color + "\'" + ", " + mileage + 
+                 string query = @"INSERT INTO Cars(CarName, Model, Color, Mileage, RentalFees, Capacity) VALUES(" + "N\'" + carName + "\'"
+                     + ", " + "N\'" + model + "\'" + ", " + "N\'" + color + "\'" + ", " + mileage + 
                      ", " + rentalFees + ", " + capacity + ")";
-                 oda = new SqlDataAdapter(query, sqlconn);
-                 DataTable dt = new DataTable();
+                 SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
+                 System.Data.DataTable dt = new System.Data.DataTable();
                  oda = new SqlDataAdapter(query, sqlconn);
                  oda.Fill(dt);
-                 query = "SET IDENTITY_INSERT Cars OFF";
-                 oda = new SqlDataAdapter(query, sqlconn);
                  sqlconn.Close();
                  _context = new CarContext();
                  _context.Cars.Load();
@@ -178,17 +178,15 @@ namespace DBCourseProject
             {
                 SqlConnection sqlconn = new SqlConnection(ConnectionString);
                 sqlconn.Open();
-                string query = "SET IDENTITY_INSERT Consultants ON";
-                SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
-                query = "INSERT INTO Consultants(ConsultantName, NumberTel, Address, Experience, Merit) VALUES(" + "\'" + consultantName + "\'"
-                    + ", " + "\'" + numberTel + "\'" + ", " + "\'" + address + "\'" + ", " + experience +
-                    ", " + "\'" + merit + "\'" + ")";
+                string query;
+                SqlDataAdapter oda;
+                query = @"INSERT INTO Consultants(ConsultantName, NumberTel, Address, Experience, Merit) VALUES(" + "N\'" + consultantName + "\'"
+                    + ", " + "\'" + numberTel + "\'" + ", " + "N\'" + address + "\'" + ", " + experience +
+                    ", " + "N\'" + merit + "\'" + ")";
                 oda = new SqlDataAdapter(query, sqlconn);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 oda = new SqlDataAdapter(query, sqlconn);
                 oda.Fill(dt);
-                query = "SET IDENTITY_INSERT Consultants OFF";
-                oda = new SqlDataAdapter(query, sqlconn);
                 sqlconn.Close();
                 _context = new CarContext();
                 _context.Consultants.Load();
@@ -214,7 +212,12 @@ namespace DBCourseProject
                 {
                     resString.Append(0);
                 }
-                resString.Append(dateIssuanceR.Month).Append(dateIssuanceR.Day);
+                resString.Append(dateIssuanceR.Month);
+                if (dateIssuanceR.Day < 10)
+                {
+                    resString.Append(0);
+                }
+                resString.Append(dateIssuanceR.Day);
                 issuanceR = resString.ToString();
             }
             catch (Exception ex)
@@ -225,17 +228,14 @@ namespace DBCourseProject
             {
                 SqlConnection sqlconn = new SqlConnection(ConnectionString);
                 sqlconn.Open();
-                string query = "SET IDENTITY_INSERT Customers ON";
-                SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
-                query = "INSERT INTO Customers(CustomerName, NumberTel, Address, CreditCardNumber, DateIssuanceRights, Characteristics) VALUES(" 
-                    + "\'" + customerName + "\'" + ", " + "\'" + numberTel + "\'" + ", " + "\'" + address + "\'" + ", "
-                    + "\'" + creditCard + "\'" + ", " + "\'" + issuanceR + "\'" + ", " + "\'" + characteristics + "\'" + ")";
+                string query;
+                SqlDataAdapter oda;
+                query = @"INSERT INTO Customers(CustomerName, NumberTel, Address, CreditCardNumber, DateIssuanceRights, Characteristics) VALUES(" 
+                    + "N\'" + customerName + "\'" + ", " + "\'" + numberTel + "\'" + ", " + "N\'" + address + "\'" + ", "
+                    + "\'" + creditCard + "\'" + ", " + "\'" + issuanceR + "\'" + ", " + "N\'" + characteristics + "\'" + ")";
                 oda = new SqlDataAdapter(query, sqlconn);
-                DataTable dt = new DataTable();
-                oda = new SqlDataAdapter(query, sqlconn);
+                System.Data.DataTable dt = new System.Data.DataTable();
                 oda.Fill(dt);
-                query = "SET IDENTITY_INSERT Customers OFF";
-                oda = new SqlDataAdapter(query, sqlconn);
                 sqlconn.Close();
                 _context = new CarContext();
                 _context.Customers.Load();
@@ -264,7 +264,13 @@ namespace DBCourseProject
                 {
                     resStringExpiry.Append(0);
                 }
-                resStringExpiry.Append(dateContract.Month).Append(dateContract.Day);
+                resStringExpiry.Append(dateContract.Month);
+                array[dateContract.Month]++;
+                if (dateContract.Day < 10)
+                {
+                    resStringExpiry.Append(0);
+                }
+                resStringExpiry.Append(dateContract.Day);
                 expiryDate = resStringExpiry.ToString();
                 dateContractDrawing = DateTime.Parse(dateDrawingContract);
                 resStringDrawing.Append(dateContractDrawing.Year);
@@ -272,7 +278,12 @@ namespace DBCourseProject
                 {
                     resStringDrawing.Append(0);
                 }
-                resStringDrawing.Append(dateContractDrawing.Month).Append(dateContractDrawing.Day);
+                resStringDrawing.Append(dateContractDrawing.Month);
+                if (dateContract.Day < 10)
+                {
+                    resStringDrawing.Append(0);
+                }
+                resStringDrawing.Append(dateContractDrawing.Day);
                 dateDrawing = resStringDrawing.ToString();
             }
             catch (Exception ex)
@@ -283,22 +294,15 @@ namespace DBCourseProject
             {
                 SqlConnection sqlconn = new SqlConnection(ConnectionString);
                 sqlconn.Open();
-                string query = "SET IDENTITY_INSERT Contracts ON";
-                SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
-                query = "INSERT INTO Contracts(CustomerID, CarID, ConsultantID, Notres, ExpiryDateLease, DateDrawingContract) VALUES(" 
-                    + customerId + ", " + carId + ", " + consultantId + ", " + "\'" + notes + "\'" +
+                string query;
+                SqlDataAdapter oda;
+                query = @"INSERT INTO Contracts(CustomerID, CarID, ConsultantID, Notres, ExpiryDateLease, DateDrawingContract) VALUES(" 
+                    + customerId + ", " + carId + ", " + consultantId + ", " + "N\'" + notes + "\'" +
                     ", " + "\'" + expiryDate + "\'" + ", " + "\'" + dateDrawing + "\'" + ")";
                 oda = new SqlDataAdapter(query, sqlconn);
-                DataTable dt = new DataTable();
-                oda = new SqlDataAdapter(query, sqlconn);
+                System.Data.DataTable dt = new System.Data.DataTable();
                 oda.Fill(dt);
-                query = "SET IDENTITY_INSERT Contracts OFF";
-                oda = new SqlDataAdapter(query, sqlconn);
                 sqlconn.Close();
-                //_context = new CarContext();
-                //_context.Contracts.Load();
-                //this.contractsBindingSource.DataSource =
-                //_context.Contracts.Local.ToBindingList();
             }
             catch (Exception ex)
             {
@@ -353,13 +357,13 @@ namespace DBCourseProject
                         query = "SELECT * FROM Cars WHERE CarId = " + param;
                         break;
                     case ("Марка"):
-                        query = "SELECT * FROM Cars WHERE CarName = " + "\'" + param + "\'";
+                        query = @"SELECT * FROM Cars WHERE CarName LIKE N" + "'" + param + "'";
                         break;
                     case ("Модель"):
-                        query = "SELECT * FROM Cars WHERE Model LIKE " + "\'" + param + "%\'";
+                        query = @"SELECT * FROM Cars WHERE Model LIKE N" + "'" + param + "'";
                         break;
                     case ("Цвет"):
-                        query = "SELECT * FROM Cars WHERE Color = " + "\'" + param +"\'";
+                        query = @"SELECT * FROM Cars WHERE Color LIKE N" + "'" + param + "'";
                         break;
                     case ("Пробег"):
                         query = "SELECT * FROM Cars WHERE Mileage = " + param;
@@ -373,9 +377,10 @@ namespace DBCourseProject
                     default:
                         query = "SELECT * FROM Cars WHERE CarId = " + 1;
                         break;
-                }
+                }		
+
                 SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 oda.Fill(dt);
                 carDataGridView.DataSource = dt;
                 sqlconn.Close();
@@ -442,28 +447,39 @@ namespace DBCourseProject
                 string filt = filterClient_comboBox.Text;
                 string param = filterClient_textBox.Text;
                 string query;
+                string issuanceR = "20150530";
+                DateTime dateIssuanceR;
+                StringBuilder resString = new StringBuilder();
                 switch (filt)
                 {
                     case ("№ Клиента"):
                         query = "SELECT * FROM Customers WHERE CustomerId = " + param;
                         break;
                     case ("Имя"):
-                        query = "SELECT * FROM Customers WHERE CustomerName = " + "\'" + param + "\'";
+                        query = @"SELECT * FROM Customers WHERE CustomerName LIKE N" + "'" + param + "'";
                         break;
                     case ("Номер телефона"):
-                        query = "SELECT * FROM Customers WHERE NumberTel LIKE " + "\'" + param + "%\'";
+                        query = "SELECT * FROM Customers WHERE NumberTel = " + "'" + param + "'";
                         break;
                     case ("Адрес"):
-                        query = "SELECT * FROM Customers WHERE Address = " + "\'" + param + "\'";
+                        query = @"SELECT * FROM Customers WHERE Address LIKE N" + "'" + param + "'";
                         break;
                     case ("Кредитная карта"):
                         query = "SELECT * FROM Customers WHERE CreditCardNumber = " + "\'" + param + "\'";
                         break;
                     case ("Права"):
-                        query = "SELECT * FROM Customers WHERE DateIssuanceRights = " + param;
+                        dateIssuanceR = DateTime.Parse(param);
+                        resString.Append(dateIssuanceR.Year);
+                        if (dateIssuanceR.Month < 10)
+                        {
+                            resString.Append(0);
+                        }
+                        resString.Append(dateIssuanceR.Month).Append(dateIssuanceR.Day);
+                        issuanceR = resString.ToString();
+                        query = "SELECT * FROM Customers WHERE DateIssuanceRights = " + "\'" + issuanceR + "\'";
                         break;
                     case ("Характеристика"):
-                        query = "SELECT * FROM Customers WHERE Characteristics = " + "\'" + param + "\'";
+                        query = @"SELECT * FROM Customers WHERE Characteristics LIKE N" + "'" + param + "'";
                         break;
                     default:
                         query = "SELECT * FROM Customers WHERE CustomerId = " + 1;
@@ -471,7 +487,7 @@ namespace DBCourseProject
                         
                 }
                 SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 oda.Fill(dt);
                 customerDataGridView.DataSource = dt;
                 sqlconn.Close();
@@ -528,19 +544,19 @@ namespace DBCourseProject
                         query = "SELECT * FROM Consultants WHERE ConsultantId = " + param;
                         break;
                     case ("Имя"):
-                        query = "SELECT * FROM Consultants WHERE ConsultantName = " + "\'" + param + "\'";
+                        query = @"SELECT * FROM Consultants WHERE ConsultantName LIKE N" + "'" + param + "'";
                         break;
                     case ("Телефон"):
-                        query = "SELECT * FROM Consultants WHERE NumberTel LIKE " + "\'" + param + "%\'";
+                        query = "SELECT * FROM Consultants WHERE NumberTel = " + "\'" + param + "\'";
                         break;
                     case ("Адрес"):
-                        query = "SELECT * FROM Consultants WHERE Address = " + "\'" + param + "%\'";
+                        query = @"SELECT * FROM Consultants WHERE Address LIKE N" + "'" + param + "'";
                         break;
                     case ("Стаж"):
                         query = "SELECT * FROM Consultants WHERE Experience = " + param;
                         break;
                     case ("Характеристика"):
-                        query = "SELECT * FROM Consultants WHERE Merit = " + "\'" + param + "%\'";
+                        query = @"SELECT * FROM Consultants WHERE Merit LIKE N" + "'" + param + "'";
                         break;
                     default:
                         query = "SELECT * FROM Consultants WHERE CustomerId = " + 1;
@@ -548,7 +564,7 @@ namespace DBCourseProject
 
                 }
                 SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
-                DataTable dt = new DataTable();
+                System.Data.DataTable dt = new System.Data.DataTable();
                 oda.Fill(dt);
                 consultantDataGridView.DataSource = dt;
                 sqlconn.Close();
@@ -559,6 +575,496 @@ namespace DBCourseProject
             }
         }
 
+        private void updateCar_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (carDataGridView.SelectedCells != null)
+                {
+                    int ind = carDataGridView.SelectedCells[0].RowIndex;
+                    addCar_form = new AddCar(this, 
+                        (string)carDataGridView[0, ind].Value.ToString(), 
+                        (string)carDataGridView[1, ind].Value,
+                        (string)carDataGridView[2, ind].Value, 
+                        (string)carDataGridView[3, ind].Value, 
+                        (string)carDataGridView[4, ind].Value.ToString(),
+                        (string)carDataGridView[5, ind].Value.ToString(), 
+                        (string)carDataGridView[6, ind].Value.ToString());
+                    if (addCar_form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void UpdateCarDatagrid(string carId, string carName, string model, string color, int mileage, int rentalFees, int capacity)
+        {
+            try
+            {
+                SqlConnection sqlconn = new SqlConnection(ConnectionString);
+                sqlconn.Open();
+                string query = @"UPDATE Cars SET CarName = " + "N\'" + carName + "\'" + ", Model = " + "N\'" + model + "\'" 
+                    + ", Color = " + "N\'" + color + "\'" + ", Mileage = " + mileage + ", RentalFees = " + rentalFees +
+                    ", Capacity = " + capacity + " WHERE CarId = " + Convert.ToInt32(carId);
+                SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                oda = new SqlDataAdapter(query, sqlconn);
+                oda.Fill(dt);
+                sqlconn.Close();
+                _context = new CarContext();
+                _context.Cars.Load();
+                this.carBindingSource.DataSource =
+                _context.Cars.Local.ToBindingList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error: " + ex.Message);
+            }
+
+        }
+
+        private void updateCustomer_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (customerDataGridView.SelectedCells != null)
+                {
+                    int ind = customerDataGridView.SelectedCells[0].RowIndex;
+                    addCustomer_form = new AddCustomer(this, 
+                        (string)customerDataGridView[0, ind].Value.ToString(),
+                        (string)customerDataGridView[1, ind].Value,
+                        (string)customerDataGridView[2, ind].Value,
+                        (string)customerDataGridView[3, ind].Value,
+                        (string)customerDataGridView[4, ind].Value.ToString(),
+                        (string)customerDataGridView[5, ind].Value.ToString(),
+                        (string)customerDataGridView[6, ind].Value.ToString());
+                    if (addCustomer_form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void UpdateCustomerDatagrid(string customerId, string customerName, string numberTel, string address,
+            string creditCard, string issuanceRights, string characteristics)
+        {
+            string issuanceR = "20150530";
+            DateTime dateIssuanceR;
+            StringBuilder resString = new StringBuilder();
+            try
+            {
+                dateIssuanceR = DateTime.Parse(issuanceRights);
+                resString.Append(dateIssuanceR.Year);
+                if (dateIssuanceR.Month < 10)
+                {
+                    resString.Append(0);
+                }
+                resString.Append(dateIssuanceR.Month);
+                if (dateIssuanceR.Day < 10)
+                {
+                    resString.Append(0);
+                }
+                resString.Append(dateIssuanceR.Day);
+                issuanceR = resString.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error: " + ex.Message);
+            }
+            try
+            {
+                SqlConnection sqlconn = new SqlConnection(ConnectionString);
+                sqlconn.Open();
+                StringBuilder query = new StringBuilder();
+                SqlDataAdapter oda;
+                query.Append(@"UPDATE Customers SET CustomerName = N'").Append(customerName).Append("\', NumberTel = N\'");
+                query.Append(numberTel).Append("\', Address = N\'").Append(address).Append("\', CreditCardNumber = N\'").Append(creditCard);
+                query.Append("\', DateIssuanceRights = \'").Append(issuanceR).Append("\', Characteristics = N\'");
+                query.Append(characteristics).Append("\' WHERE CustomerId = ").Append(Convert.ToInt32(customerId));
+                oda = new SqlDataAdapter(query.ToString(), sqlconn);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                oda.Fill(dt);
+                sqlconn.Close();
+                _context = new CarContext();
+                _context.Customers.Load();
+                this.customerBindingSource.DataSource =
+                _context.Customers.Local.ToBindingList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error: " + ex.Message);
+            }
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateConsultant_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (consultantDataGridView.SelectedCells != null)
+                {
+                    int ind = consultantDataGridView.SelectedCells[0].RowIndex;
+                    addConsultant_form = new AddConsultant(this,
+                        (string)consultantDataGridView[0, ind].Value.ToString(),
+                        (string)consultantDataGridView[1, ind].Value,
+                        (string)consultantDataGridView[2, ind].Value,
+                        (string)consultantDataGridView[3, ind].Value,
+                        (string)consultantDataGridView[4, ind].Value.ToString(),
+                        (string)consultantDataGridView[5, ind].Value.ToString());
+                    if (addConsultant_form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void UpdateConsultantDatagrid(string consultantId, string consultantName, string numberTel, string address,
+            int experience, string merit)
+        {
+            try
+            {
+                SqlConnection sqlconn = new SqlConnection(ConnectionString);
+                sqlconn.Open();
+                StringBuilder query = new StringBuilder();
+                SqlDataAdapter oda;
+                query.Append(@"UPDATE Consultants SET ConsultantName = N'").Append(consultantName).Append("\', NumberTel = N\'");
+                query.Append(numberTel).Append("\', Address = N\'").Append(address).Append("\', Experience = ").Append(experience);
+                query.Append(", Merit = N\'").Append(merit).Append("\' WHERE ConsultantId = ").Append(Convert.ToInt32(consultantId));
+                oda = new SqlDataAdapter(query.ToString(), sqlconn);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                oda.Fill(dt);
+                sqlconn.Close();
+                _context = new CarContext();
+                _context.Consultants.Load();
+                this.consultantBindingSource.DataSource =
+                _context.Consultants.Local.ToBindingList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error: " + ex.Message);
+            }
+        }
+
+        private void xmlCar_button_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+            ExcelApp.Application.Workbooks.Add(Type.Missing);
+            ExcelApp.Columns.ColumnWidth = 20;
+            ExcelApp.Cells[1, 1] = "№ Автомобиля";
+            ExcelApp.Cells[1, 2] = "Марка";
+            ExcelApp.Cells[1, 3] = "Модель";
+            ExcelApp.Cells[1, 4] = "Цвет";
+            ExcelApp.Cells[1, 5] = "Пробег";
+            ExcelApp.Cells[1, 6] = "Стоимость проката";
+            ExcelApp.Cells[1, 7] = "Вместимость";
+
+            for (int i = 0; i < carDataGridView.ColumnCount; i++)
+            {
+                for (int j = 0; j < carDataGridView.RowCount; j++)
+                {
+                    ExcelApp.Cells[j + 2, i + 1] = (carDataGridView[i, j].Value ?? "").ToString();
+                }
+            }
+            ExcelApp.Visible = true;
+        }
+
+        private void xmlCustomer_button_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+            ExcelApp.Application.Workbooks.Add(Type.Missing);
+            ExcelApp.Columns.ColumnWidth = 20;
+            ExcelApp.Cells[1, 1] = "№ Клиента";
+            ExcelApp.Cells[1, 2] = "Имя";
+            ExcelApp.Cells[1, 3] = "Номер телефона";
+            ExcelApp.Cells[1, 4] = "Адрес";
+            ExcelApp.Cells[1, 5] = "Номер кредитной карты";
+            ExcelApp.Cells[1, 6] = "Права";
+            ExcelApp.Cells[1, 7] = "Характеристика";
+
+            for (int i = 0; i < customerDataGridView.ColumnCount; i++)
+            {
+                for (int j = 0; j < customerDataGridView.RowCount; j++)
+                {
+                    ExcelApp.Cells[j + 2, i + 1] = (customerDataGridView[i, j].Value ?? "").ToString();
+                }
+            }
+            ExcelApp.Visible = true;
+        }
+
+        private void xmlConsultant_button_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+            ExcelApp.Application.Workbooks.Add(Type.Missing);
+            ExcelApp.Columns.ColumnWidth = 20;
+            ExcelApp.Cells[1, 1] = "№ Консультанта";
+            ExcelApp.Cells[1, 2] = "Имя";
+            ExcelApp.Cells[1, 3] = "Номер телефона";
+            ExcelApp.Cells[1, 4] = "Адрес";
+            ExcelApp.Cells[1, 5] = "Стаж";
+            ExcelApp.Cells[1, 6] = "Характеристика";
+
+            for (int i = 0; i < consultantDataGridView.ColumnCount; i++)
+            {
+                for (int j = 0; j < consultantDataGridView.RowCount; j++)
+                {
+                    ExcelApp.Cells[j + 2, i + 1] = (consultantDataGridView[i, j].Value ?? "").ToString();
+                }
+            }
+            ExcelApp.Visible = true;
+        }
+
+        private void contractsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void запросToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sqlQuery_form = new SQL_QueryForm(this);
+            if (sqlQuery_form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        public void doSQLQuery(string query)
+        {
+            try
+            {
+                SqlConnection sqlconn = new SqlConnection(ConnectionString);
+                sqlconn.Open();
+                SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                oda = new SqlDataAdapter(query, sqlconn);
+                oda.Fill(dt);
+                if (query.Contains("Cars"))
+                {
+                    carDataGridView.DataSource = dt;
+                }
+                else if (query.Contains("Customers"))
+                {
+                    customerDataGridView.DataSource = dt;
+                }
+                else if (query.Contains("Consultants"))
+                {
+                    consultantDataGridView.DataSource = dt;
+                }
+                sqlconn.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error: " + ex.Message);
+            }
+
+        }
+
+        private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /*try
+            {
+                SqlConnection sqlconn = new SqlConnection(ConnectionString);
+                sqlconn.Open();
+                string query = "SELECT * FROM Cars";
+                SqlDataAdapter oda = new SqlDataAdapter(query, sqlconn);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                oda = new SqlDataAdapter(query, sqlconn);
+                oda.Fill(dt);
+                carDataGridView.DataSource = dt;
+                query = "SELECT * FROM Customers";
+                System.Data.DataTable dt1 = new System.Data.DataTable();
+                oda = new SqlDataAdapter(query, sqlconn);
+                oda.Fill(dt1);
+                customerDataGridView.DataSource = dt1;
+                query = "SELECT * FROM Consultants";
+                System.Data.DataTable dt2 = new System.Data.DataTable();
+                oda = new SqlDataAdapter(query, sqlconn);
+                oda.Fill(dt2);
+                consultantDataGridView.DataSource = dt2;
+                sqlconn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Error: " + ex.Message);
+            }*/
+        }
+
+        private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportForm report = new ReportForm(array);
+            report.Show();
+        }
+
+        private void createContract_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (contractsDataGridView.SelectedCells != null)
+                {
+                    int ind = contractsDataGridView.SelectedCells[0].RowIndex;
+                    CreateContract(
+                        (string)contractsDataGridView[0, ind].Value.ToString(),
+                        (string)contractsDataGridView[1, ind].Value.ToString(),
+                        (string)contractsDataGridView[2, ind].Value.ToString(),
+                        (string)contractsDataGridView[3, ind].Value.ToString(),
+                        (string)contractsDataGridView[4, ind].Value.ToString(),
+                        (string)contractsDataGridView[5, ind].Value.ToString(),
+                        (string)contractsDataGridView[6, ind].Value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CreateContract(string contractId, string customerId, string carId, string consultantId, string notes, 
+            string expiryDateLease, string dateDrawingContract) 
+        {
+            Microsoft.Office.Interop.Word.Application WordApp = new Microsoft.Office.Interop.Word.Application();
+
+            object missing = System.Reflection.Missing.Value;
+            Microsoft.Office.Interop.Word.Document document =
+                    WordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+            document.Content.SetRange(0, 0);
+            StringBuilder contract = new StringBuilder();
+            contract.Append("\t\t\t\t\t Контракт № ").Append(contractId).Append("\n");
+            contract.Append("\tНастоящий контракт заключен между \"ОАО ХарьковАвтопрокат12345\" в лице генерального директора ");
+            contract.Append("Минакова Артема Геннадиевича с одной стороны, и клиентом №").Append(customerId).Append(". ");
+            contract.Append("Автопрокат обязуется предоставить клиенту автомобиль №").Append(carId);
+            contract.Append(" на срок с ").Append(dateDrawingContract).Append(" по ").Append(expiryDateLease).Append("\n\n");
+            contract.Append("Премечания \t").Append(notes).Append("\n\n");
+            contract.Append("Консультант №").Append(consultantId);
+            document.Content.Text =  contract.ToString() + Environment.NewLine;
+            WordApp.Visible = true;
+        }
+
+        private void createContract1_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (contractsDataGridView1.SelectedCells != null)
+                {
+                    int ind = contractsDataGridView1.SelectedCells[0].RowIndex;
+                    CreateContract(
+                        (string)contractsDataGridView1[0, ind].Value.ToString(),
+                        (string)contractsDataGridView1[1, ind].Value.ToString(),
+                        (string)contractsDataGridView1[2, ind].Value.ToString(),
+                        (string)contractsDataGridView1[3, ind].Value.ToString(),
+                        (string)contractsDataGridView1[4, ind].Value.ToString(),
+                        (string)contractsDataGridView1[5, ind].Value.ToString(),
+                        (string)contractsDataGridView1[6, ind].Value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void createContract2_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (contractsDataGridView2.SelectedCells != null)
+                {
+                    int ind = contractsDataGridView2.SelectedCells[0].RowIndex;
+                    CreateContract(
+                        (string)contractsDataGridView2[0, ind].Value.ToString(),
+                        (string)contractsDataGridView2[1, ind].Value.ToString(),
+                        (string)contractsDataGridView2[2, ind].Value.ToString(),
+                        (string)contractsDataGridView2[3, ind].Value.ToString(),
+                        (string)contractsDataGridView2[4, ind].Value.ToString(),
+                        (string)contractsDataGridView2[5, ind].Value.ToString(),
+                        (string)contractsDataGridView2[6, ind].Value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CheckDateCustomerRights()
+        {
+            DateTime dateToday = DateTime.Today;
+            DateTime dateRights;
+            int count = customerDataGridView.Rows.Count;
+            try
+            {
+                for (int i = 0; i < count - 1; i++)
+                {
+                    string data = customerDataGridView.Rows[i].Cells[5].Value.ToString();
+                    dateRights = DateTime.Parse(data);
+                    if (dateRights.Year < dateToday.Year)
+                    {
+                        try
+                        {
+                            customerDataGridView.Rows.RemoveAt(i);
+                            MessageBox.Show("У клиента №" + carDataGridView.Rows[i].Cells[0].Value.ToString() + " истекли права");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void CheckCar()
+        {
+            int count = carDataGridView.Rows.Count;
+            try
+            {
+                for (int i = 0; i < count - 1; i++)
+                {
+                    string mileage = carDataGridView.Rows[i].Cells[4].Value.ToString();
+                    if (Convert.ToInt32(mileage) > 10000 )
+                    {
+                        try
+                        {
+                            MessageBox.Show("Необходим техосмотр автомобиля №" + carDataGridView.Rows[i].Cells[0].Value.ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
         
     }
 }

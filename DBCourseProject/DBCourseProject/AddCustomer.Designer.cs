@@ -13,13 +13,6 @@ namespace DBCourseProject
     partial class AddCustomer : Form
     {
 
-        private Form1 mainForm;
-        public AddCustomer(Form1 _mainForm)
-        {
-            InitializeComponent();
-            mainForm = _mainForm;
-        }
-
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -49,8 +42,6 @@ namespace DBCourseProject
             this.ErrorBox_label = new System.Windows.Forms.Label();
             this.cancel_button = new System.Windows.Forms.Button();
             this.ok_button = new System.Windows.Forms.Button();
-            this.characteristics_textBox = new System.Windows.Forms.TextBox();
-            this.issuanceRights_textBox = new System.Windows.Forms.TextBox();
             this.creditCard_textBox = new System.Windows.Forms.TextBox();
             this.address_textBox = new System.Windows.Forms.TextBox();
             this.numberTel_textBox = new System.Windows.Forms.TextBox();
@@ -61,6 +52,8 @@ namespace DBCourseProject
             this.address_label = new System.Windows.Forms.Label();
             this.numberTel_label = new System.Windows.Forms.Label();
             this.customerName_label = new System.Windows.Forms.Label();
+            this.characteristics_textBox = new System.Windows.Forms.TextBox();
+            this.issuanceRights_textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ErrorBox_label
@@ -90,20 +83,6 @@ namespace DBCourseProject
             this.ok_button.Text = "OK";
             this.ok_button.UseVisualStyleBackColor = true;
             this.ok_button.Click += new System.EventHandler(this.ok_button_Click);
-            // 
-            // characteristics_textBox
-            // 
-            this.characteristics_textBox.Location = new System.Drawing.Point(194, 178);
-            this.characteristics_textBox.Name = "characteristics_textBox";
-            this.characteristics_textBox.Size = new System.Drawing.Size(278, 20);
-            this.characteristics_textBox.TabIndex = 26;
-            // 
-            // issuanceRights_textBox
-            // 
-            this.issuanceRights_textBox.Location = new System.Drawing.Point(194, 145);
-            this.issuanceRights_textBox.Name = "issuanceRights_textBox";
-            this.issuanceRights_textBox.Size = new System.Drawing.Size(278, 20);
-            this.issuanceRights_textBox.TabIndex = 25;
             // 
             // creditCard_textBox
             // 
@@ -187,6 +166,20 @@ namespace DBCourseProject
             this.customerName_label.TabIndex = 15;
             this.customerName_label.Text = "Имя клиента";
             // 
+            // characteristics_textBox
+            // 
+            this.characteristics_textBox.Location = new System.Drawing.Point(194, 178);
+            this.characteristics_textBox.Name = "characteristics_textBox";
+            this.characteristics_textBox.Size = new System.Drawing.Size(278, 20);
+            this.characteristics_textBox.TabIndex = 26;
+            // 
+            // issuanceRights_textBox
+            // 
+            this.issuanceRights_textBox.Location = new System.Drawing.Point(194, 145);
+            this.issuanceRights_textBox.Name = "issuanceRights_textBox";
+            this.issuanceRights_textBox.Size = new System.Drawing.Size(278, 20);
+            this.issuanceRights_textBox.TabIndex = 25;
+            // 
             // AddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,8 +214,6 @@ namespace DBCourseProject
         private System.Windows.Forms.Label ErrorBox_label;
         private System.Windows.Forms.Button cancel_button;
         private System.Windows.Forms.Button ok_button;
-        private System.Windows.Forms.TextBox characteristics_textBox;
-        private System.Windows.Forms.TextBox issuanceRights_textBox;
         private System.Windows.Forms.TextBox creditCard_textBox;
         private System.Windows.Forms.TextBox address_textBox;
         private System.Windows.Forms.TextBox numberTel_textBox;
@@ -233,5 +224,7 @@ namespace DBCourseProject
         private System.Windows.Forms.Label address_label;
         private System.Windows.Forms.Label numberTel_label;
         private System.Windows.Forms.Label customerName_label;
+        private TextBox characteristics_textBox;
+        private TextBox issuanceRights_textBox;
     }
 }

@@ -12,6 +12,31 @@ namespace DBCourseProject
 {
     public partial class AddCar : Form
     {
+
+        private Form1 mainForm;
+        private bool update = false;
+        private string updateCarId;
+        public AddCar(Form1 _mainForm)
+        {
+            InitializeComponent();
+            mainForm = _mainForm;
+        }
+
+        public AddCar(Form1 _mainForm, string carId, string carName, string model, string color, string mileage, 
+            string rentalFees, string capacity)
+        {
+            update = true;
+            updateCarId = carId;
+            InitializeComponent();
+            mainForm = _mainForm;
+            carName_textBox.AppendText(carName);
+            model_textBox.AppendText(model);
+            color_textBox.AppendText(color);
+            mileage_textBox.AppendText(mileage);
+            rentalFees_textBox.AppendText(rentalFees);
+            capacity_textBox.AppendText(capacity);
+        }
+
         public AddCar()
         {
             InitializeComponent();
@@ -65,8 +90,16 @@ namespace DBCourseProject
 
             if (validation)
             {
-                this.DialogResult = DialogResult.OK;
-                mainForm.AddCarToDatagrid(carName, model, color, Convert.ToInt32(mileage), Convert.ToInt32(rentalFees), Convert.ToInt32(capacity));
+                if (update)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    mainForm.UpdateCarDatagrid(updateCarId, carName, model, color, Convert.ToInt32(mileage), Convert.ToInt32(rentalFees), Convert.ToInt32(capacity));
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    mainForm.AddCarToDatagrid(carName, model, color, Convert.ToInt32(mileage), Convert.ToInt32(rentalFees), Convert.ToInt32(capacity));
+                }
                 foreach (var item in this.Controls)
                 {
                     if (item is TextBox)

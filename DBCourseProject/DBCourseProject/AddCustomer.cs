@@ -12,6 +12,32 @@ namespace DBCourseProject
 {
     public partial class AddCustomer : Form
     {
+
+        private Form1 mainForm;
+        private bool update = false;
+        private string updateCustomerId;
+
+        public AddCustomer(Form1 _mainForm)
+        {
+            InitializeComponent();
+            mainForm = _mainForm;
+        }
+
+        public AddCustomer(Form1 _mainForm, string customerId, string customerName, string numberTel, string address, string creditCard,
+            string issuanceRights, string characteristics)
+        {
+            update = true;
+            updateCustomerId = customerId;
+            InitializeComponent();
+            mainForm = _mainForm;
+            customerName_textBox.AppendText(customerName);
+            numberTel_textBox.AppendText(numberTel);
+            address_textBox.AppendText(address);
+            creditCard_textBox.AppendText(creditCard);
+            issuanceRights_textBox.AppendText(issuanceRights);
+            characteristics_textBox.AppendText(characteristics);
+        }
+
         public AddCustomer()
         {
             InitializeComponent();
@@ -65,8 +91,16 @@ namespace DBCourseProject
 
             if (validation)
             {
-                this.DialogResult = DialogResult.OK;
-                mainForm.AddCustomerToDatagrid(customerName, numberTel, address, creditCard, issuanceRights, characteristics);
+                if (update)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    mainForm.UpdateCustomerDatagrid(updateCustomerId, customerName, numberTel, address, creditCard, issuanceRights, characteristics);
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    mainForm.AddCustomerToDatagrid(customerName, numberTel, address, creditCard, issuanceRights, characteristics);
+                }
                 foreach (var item in this.Controls)
                 {
                     if (item is TextBox)

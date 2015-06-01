@@ -12,6 +12,31 @@ namespace DBCourseProject
 {
     public partial class AddConsultant : Form
     {
+
+        private Form1 mainForm;
+        private bool update = false;
+        private string updateConsultantId;
+
+        public AddConsultant(Form1 _mainForm)
+        {
+            InitializeComponent();
+            mainForm = _mainForm;
+        }
+
+        public AddConsultant(Form1 _mainForm, string consultantId, string consultantName, string numberTel, string address, 
+            string experience, string merit)
+        {
+            update = true;
+            updateConsultantId = consultantId;
+            InitializeComponent();
+            mainForm = _mainForm;
+            consultantName_textBox.AppendText(consultantName);
+            numberTel_textBox.AppendText(numberTel);
+            address_textBox.AppendText(address);
+            experience_textBox.AppendText(experience);
+            merit_textBox.AppendText(merit);
+        }
+
         public AddConsultant()
         {
             InitializeComponent();
@@ -69,8 +94,16 @@ namespace DBCourseProject
 
             if (validation)
             {
-                this.DialogResult = DialogResult.OK;
-                mainForm.AddConsultantToDatagrid(consultantName, numberTel, address, Convert.ToInt32(experience), merit);
+                if (update)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    mainForm.UpdateConsultantDatagrid(updateConsultantId, consultantName, numberTel, address, Convert.ToInt32(experience), merit);
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    mainForm.AddConsultantToDatagrid(consultantName, numberTel, address, Convert.ToInt32(experience), merit);
+                }
                 foreach (var item in this.Controls)
                 {
                     if (item is TextBox)

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.xmlCar_button = new System.Windows.Forms.Button();
+            this.sqlQueryCar_button = new System.Windows.Forms.Button();
+            this.updateCar_button = new System.Windows.Forms.Button();
             this.filter_button = new System.Windows.Forms.Button();
             this.filter_textBox = new System.Windows.Forms.TextBox();
             this.filter_comboBox = new System.Windows.Forms.ComboBox();
@@ -40,17 +43,32 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.carDataGridView = new System.Windows.Forms.DataGridView();
             this.contractsDataGridView = new System.Windows.Forms.DataGridView();
-            this.contractsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.xmlCustomer_button = new System.Windows.Forms.Button();
+            this.sqlQueryCustomer_button = new System.Windows.Forms.Button();
+            this.updateCustomer_button = new System.Windows.Forms.Button();
+            this.fliterClient_button = new System.Windows.Forms.Button();
+            this.filterClient_textBox = new System.Windows.Forms.TextBox();
+            this.filterClient_comboBox = new System.Windows.Forms.ComboBox();
+            this.dleteCustomer_button = new System.Windows.Forms.Button();
+            this.searchCustomer_textBox = new System.Windows.Forms.TextBox();
+            this.searchCustomer_button = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.customerDataGridView = new System.Windows.Forms.DataGridView();
             this.contractsDataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contractsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.xmlConsultant_button = new System.Windows.Forms.Button();
+            this.sqlQueryConsultant_button = new System.Windows.Forms.Button();
+            this.updateConsultant_button = new System.Windows.Forms.Button();
+            this.filterConsultant_button = new System.Windows.Forms.Button();
+            this.filterConsultant_textBox = new System.Windows.Forms.TextBox();
+            this.filterConsultant_comboBox = new System.Windows.Forms.ComboBox();
+            this.deletaConsultant_button = new System.Windows.Forms.Button();
+            this.searchConsultant_textBox = new System.Windows.Forms.TextBox();
+            this.searchConsultant_button = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.consultantDataGridView = new System.Windows.Forms.DataGridView();
             this.contractsDataGridView2 = new System.Windows.Forms.DataGridView();
-            this.contractsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,23 +78,17 @@
             this.клиентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.консультантToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.контрактToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contractsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fliterClient_button = new System.Windows.Forms.Button();
-            this.filterClient_textBox = new System.Windows.Forms.TextBox();
-            this.filterClient_comboBox = new System.Windows.Forms.ComboBox();
-            this.dleteCustomer_button = new System.Windows.Forms.Button();
-            this.searchCustomer_textBox = new System.Windows.Forms.TextBox();
-            this.searchCustomer_button = new System.Windows.Forms.Button();
-            this.filterConsultant_button = new System.Windows.Forms.Button();
-            this.filterConsultant_textBox = new System.Windows.Forms.TextBox();
-            this.filterConsultant_comboBox = new System.Windows.Forms.ComboBox();
-            this.deletaConsultant_button = new System.Windows.Forms.Button();
-            this.searchConsultant_textBox = new System.Windows.Forms.TextBox();
-            this.searchConsultant_button = new System.Windows.Forms.Button();
+            this.sQLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contractsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contractsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.contractsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.createContract_button = new System.Windows.Forms.Button();
+            this.createContract1_button = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,6 +133,7 @@
             this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createContract2_button = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -129,7 +142,6 @@
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.carDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -137,7 +149,6 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource2)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -145,8 +156,10 @@
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.consultantDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantBindingSource)).BeginInit();
@@ -169,6 +182,10 @@
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
+            this.tabPage1.Controls.Add(this.createContract_button);
+            this.tabPage1.Controls.Add(this.xmlCar_button);
+            this.tabPage1.Controls.Add(this.sqlQueryCar_button);
+            this.tabPage1.Controls.Add(this.updateCar_button);
             this.tabPage1.Controls.Add(this.filter_button);
             this.tabPage1.Controls.Add(this.filter_textBox);
             this.tabPage1.Controls.Add(this.filter_comboBox);
@@ -184,9 +201,38 @@
             this.tabPage1.Text = "Машины";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // xmlCar_button
+            // 
+            this.xmlCar_button.Location = new System.Drawing.Point(768, 7);
+            this.xmlCar_button.Name = "xmlCar_button";
+            this.xmlCar_button.Size = new System.Drawing.Size(125, 23);
+            this.xmlCar_button.TabIndex = 11;
+            this.xmlCar_button.Text = "Сохранить как XML";
+            this.xmlCar_button.UseVisualStyleBackColor = true;
+            this.xmlCar_button.Click += new System.EventHandler(this.xmlCar_button_Click);
+            // 
+            // sqlQueryCar_button
+            // 
+            this.sqlQueryCar_button.Location = new System.Drawing.Point(688, 7);
+            this.sqlQueryCar_button.Name = "sqlQueryCar_button";
+            this.sqlQueryCar_button.Size = new System.Drawing.Size(75, 23);
+            this.sqlQueryCar_button.TabIndex = 10;
+            this.sqlQueryCar_button.Text = "SQL";
+            this.sqlQueryCar_button.UseVisualStyleBackColor = true;
+            // 
+            // updateCar_button
+            // 
+            this.updateCar_button.Location = new System.Drawing.Point(607, 7);
+            this.updateCar_button.Name = "updateCar_button";
+            this.updateCar_button.Size = new System.Drawing.Size(75, 23);
+            this.updateCar_button.TabIndex = 9;
+            this.updateCar_button.Text = "Изменить";
+            this.updateCar_button.UseVisualStyleBackColor = true;
+            this.updateCar_button.Click += new System.EventHandler(this.updateCar_button_Click);
+            // 
             // filter_button
             // 
-            this.filter_button.Location = new System.Drawing.Point(556, 7);
+            this.filter_button.Location = new System.Drawing.Point(270, 7);
             this.filter_button.Name = "filter_button";
             this.filter_button.Size = new System.Drawing.Size(94, 23);
             this.filter_button.TabIndex = 8;
@@ -196,7 +242,7 @@
             // 
             // filter_textBox
             // 
-            this.filter_textBox.Location = new System.Drawing.Point(438, 9);
+            this.filter_textBox.Location = new System.Drawing.Point(495, 8);
             this.filter_textBox.Name = "filter_textBox";
             this.filter_textBox.Size = new System.Drawing.Size(100, 20);
             this.filter_textBox.TabIndex = 7;
@@ -212,14 +258,14 @@
             "Пробег",
             "Стоимость проката",
             "Вместимость"});
-            this.filter_comboBox.Location = new System.Drawing.Point(294, 7);
+            this.filter_comboBox.Location = new System.Drawing.Point(368, 8);
             this.filter_comboBox.Name = "filter_comboBox";
             this.filter_comboBox.Size = new System.Drawing.Size(121, 21);
             this.filter_comboBox.TabIndex = 6;
             // 
             // clearSelect_button
             // 
-            this.clearSelect_button.Location = new System.Drawing.Point(206, 7);
+            this.clearSelect_button.Location = new System.Drawing.Point(190, 7);
             this.clearSelect_button.Name = "clearSelect_button";
             this.clearSelect_button.Size = new System.Drawing.Size(75, 23);
             this.clearSelect_button.TabIndex = 5;
@@ -229,14 +275,14 @@
             // 
             // search_textBox
             // 
-            this.search_textBox.Location = new System.Drawing.Point(88, 9);
+            this.search_textBox.Location = new System.Drawing.Point(84, 9);
             this.search_textBox.Name = "search_textBox";
             this.search_textBox.Size = new System.Drawing.Size(100, 20);
             this.search_textBox.TabIndex = 4;
             // 
             // search_button
             // 
-            this.search_button.Location = new System.Drawing.Point(7, 7);
+            this.search_button.Location = new System.Drawing.Point(4, 7);
             this.search_button.Name = "search_button";
             this.search_button.Size = new System.Drawing.Size(75, 23);
             this.search_button.TabIndex = 3;
@@ -249,7 +295,7 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(3, 52);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 36);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -260,8 +306,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.contractsDataGridView);
-            this.splitContainer1.Size = new System.Drawing.Size(1011, 417);
-            this.splitContainer1.SplitterDistance = 207;
+            this.splitContainer1.Size = new System.Drawing.Size(1011, 433);
+            this.splitContainer1.SplitterDistance = 214;
             this.splitContainer1.TabIndex = 2;
             // 
             // carDataGridView
@@ -283,7 +329,7 @@
             this.carDataGridView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.carDataGridView.Location = new System.Drawing.Point(0, 0);
             this.carDataGridView.Name = "carDataGridView";
-            this.carDataGridView.Size = new System.Drawing.Size(1011, 207);
+            this.carDataGridView.Size = new System.Drawing.Size(1011, 214);
             this.carDataGridView.TabIndex = 0;
             // 
             // contractsDataGridView
@@ -305,16 +351,15 @@
             this.contractsDataGridView.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.contractsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.contractsDataGridView.Name = "contractsDataGridView";
-            this.contractsDataGridView.Size = new System.Drawing.Size(1011, 206);
+            this.contractsDataGridView.Size = new System.Drawing.Size(1011, 215);
             this.contractsDataGridView.TabIndex = 1;
-            // 
-            // contractsBindingSource
-            // 
-            this.contractsBindingSource.DataMember = "Contracts";
-            this.contractsBindingSource.DataSource = this.carBindingSource;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.createContract1_button);
+            this.tabPage2.Controls.Add(this.xmlCustomer_button);
+            this.tabPage2.Controls.Add(this.sqlQueryCustomer_button);
+            this.tabPage2.Controls.Add(this.updateCustomer_button);
             this.tabPage2.Controls.Add(this.fliterClient_button);
             this.tabPage2.Controls.Add(this.filterClient_textBox);
             this.tabPage2.Controls.Add(this.filterClient_comboBox);
@@ -329,6 +374,96 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Клиенты";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // xmlCustomer_button
+            // 
+            this.xmlCustomer_button.Location = new System.Drawing.Point(763, 6);
+            this.xmlCustomer_button.Name = "xmlCustomer_button";
+            this.xmlCustomer_button.Size = new System.Drawing.Size(125, 23);
+            this.xmlCustomer_button.TabIndex = 18;
+            this.xmlCustomer_button.Text = "Сохранить как XML";
+            this.xmlCustomer_button.UseVisualStyleBackColor = true;
+            this.xmlCustomer_button.Click += new System.EventHandler(this.xmlCustomer_button_Click);
+            // 
+            // sqlQueryCustomer_button
+            // 
+            this.sqlQueryCustomer_button.Location = new System.Drawing.Point(683, 6);
+            this.sqlQueryCustomer_button.Name = "sqlQueryCustomer_button";
+            this.sqlQueryCustomer_button.Size = new System.Drawing.Size(75, 23);
+            this.sqlQueryCustomer_button.TabIndex = 17;
+            this.sqlQueryCustomer_button.Text = "SQL";
+            this.sqlQueryCustomer_button.UseVisualStyleBackColor = true;
+            // 
+            // updateCustomer_button
+            // 
+            this.updateCustomer_button.Location = new System.Drawing.Point(602, 6);
+            this.updateCustomer_button.Name = "updateCustomer_button";
+            this.updateCustomer_button.Size = new System.Drawing.Size(75, 23);
+            this.updateCustomer_button.TabIndex = 16;
+            this.updateCustomer_button.Text = "Изменить";
+            this.updateCustomer_button.UseVisualStyleBackColor = true;
+            this.updateCustomer_button.Click += new System.EventHandler(this.updateCustomer_button_Click);
+            // 
+            // fliterClient_button
+            // 
+            this.fliterClient_button.Location = new System.Drawing.Point(270, 6);
+            this.fliterClient_button.Name = "fliterClient_button";
+            this.fliterClient_button.Size = new System.Drawing.Size(94, 23);
+            this.fliterClient_button.TabIndex = 15;
+            this.fliterClient_button.Text = "Фильтрация";
+            this.fliterClient_button.UseVisualStyleBackColor = true;
+            this.fliterClient_button.Click += new System.EventHandler(this.fliterClient_button_Click);
+            // 
+            // filterClient_textBox
+            // 
+            this.filterClient_textBox.Location = new System.Drawing.Point(496, 7);
+            this.filterClient_textBox.Name = "filterClient_textBox";
+            this.filterClient_textBox.Size = new System.Drawing.Size(100, 20);
+            this.filterClient_textBox.TabIndex = 14;
+            // 
+            // filterClient_comboBox
+            // 
+            this.filterClient_comboBox.FormattingEnabled = true;
+            this.filterClient_comboBox.Items.AddRange(new object[] {
+            "№ Клиента",
+            "Имя",
+            "Номер телефона",
+            "Адрес",
+            "Кредитная карта",
+            "Права",
+            "Характеристика"});
+            this.filterClient_comboBox.Location = new System.Drawing.Point(368, 7);
+            this.filterClient_comboBox.Name = "filterClient_comboBox";
+            this.filterClient_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.filterClient_comboBox.TabIndex = 13;
+            // 
+            // dleteCustomer_button
+            // 
+            this.dleteCustomer_button.Location = new System.Drawing.Point(191, 6);
+            this.dleteCustomer_button.Name = "dleteCustomer_button";
+            this.dleteCustomer_button.Size = new System.Drawing.Size(75, 23);
+            this.dleteCustomer_button.TabIndex = 12;
+            this.dleteCustomer_button.Text = "Удалить";
+            this.dleteCustomer_button.UseVisualStyleBackColor = true;
+            this.dleteCustomer_button.Click += new System.EventHandler(this.dleteCustomer_button_Click);
+            // 
+            // searchCustomer_textBox
+            // 
+            this.searchCustomer_textBox.Location = new System.Drawing.Point(84, 8);
+            this.searchCustomer_textBox.Name = "searchCustomer_textBox";
+            this.searchCustomer_textBox.Size = new System.Drawing.Size(100, 20);
+            this.searchCustomer_textBox.TabIndex = 11;
+            // 
+            // searchCustomer_button
+            // 
+            this.searchCustomer_button.Location = new System.Drawing.Point(5, 6);
+            this.searchCustomer_button.Name = "searchCustomer_button";
+            this.searchCustomer_button.Size = new System.Drawing.Size(75, 23);
+            this.searchCustomer_button.TabIndex = 10;
+            this.searchCustomer_button.Text = "Поиск";
+            this.searchCustomer_button.UseVisualStyleBackColor = true;
+            this.searchCustomer_button.Click += new System.EventHandler(this.searchCustomer_button_Click);
             // 
             // splitContainer2
             // 
@@ -394,13 +529,12 @@
             this.contractsDataGridView1.Size = new System.Drawing.Size(1008, 218);
             this.contractsDataGridView1.TabIndex = 0;
             // 
-            // contractsBindingSource2
-            // 
-            this.contractsBindingSource2.DataMember = "Contracts";
-            this.contractsBindingSource2.DataSource = this.customerBindingSource;
-            // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.createContract2_button);
+            this.tabPage3.Controls.Add(this.xmlConsultant_button);
+            this.tabPage3.Controls.Add(this.sqlQueryConsultant_button);
+            this.tabPage3.Controls.Add(this.updateConsultant_button);
             this.tabPage3.Controls.Add(this.filterConsultant_button);
             this.tabPage3.Controls.Add(this.filterConsultant_textBox);
             this.tabPage3.Controls.Add(this.filterConsultant_comboBox);
@@ -416,6 +550,94 @@
             this.tabPage3.Text = "Консультанты";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // xmlConsultant_button
+            // 
+            this.xmlConsultant_button.Location = new System.Drawing.Point(763, 6);
+            this.xmlConsultant_button.Name = "xmlConsultant_button";
+            this.xmlConsultant_button.Size = new System.Drawing.Size(125, 23);
+            this.xmlConsultant_button.TabIndex = 24;
+            this.xmlConsultant_button.Text = "Сохранить как XML";
+            this.xmlConsultant_button.UseVisualStyleBackColor = true;
+            this.xmlConsultant_button.Click += new System.EventHandler(this.xmlConsultant_button_Click);
+            // 
+            // sqlQueryConsultant_button
+            // 
+            this.sqlQueryConsultant_button.Location = new System.Drawing.Point(682, 6);
+            this.sqlQueryConsultant_button.Name = "sqlQueryConsultant_button";
+            this.sqlQueryConsultant_button.Size = new System.Drawing.Size(75, 23);
+            this.sqlQueryConsultant_button.TabIndex = 23;
+            this.sqlQueryConsultant_button.Text = "SQL";
+            this.sqlQueryConsultant_button.UseVisualStyleBackColor = true;
+            // 
+            // updateConsultant_button
+            // 
+            this.updateConsultant_button.Location = new System.Drawing.Point(602, 6);
+            this.updateConsultant_button.Name = "updateConsultant_button";
+            this.updateConsultant_button.Size = new System.Drawing.Size(75, 23);
+            this.updateConsultant_button.TabIndex = 22;
+            this.updateConsultant_button.Text = "Изменить";
+            this.updateConsultant_button.UseVisualStyleBackColor = true;
+            this.updateConsultant_button.Click += new System.EventHandler(this.updateConsultant_button_Click);
+            // 
+            // filterConsultant_button
+            // 
+            this.filterConsultant_button.Location = new System.Drawing.Point(268, 6);
+            this.filterConsultant_button.Name = "filterConsultant_button";
+            this.filterConsultant_button.Size = new System.Drawing.Size(94, 23);
+            this.filterConsultant_button.TabIndex = 21;
+            this.filterConsultant_button.Text = "Фильтрация";
+            this.filterConsultant_button.UseVisualStyleBackColor = true;
+            this.filterConsultant_button.Click += new System.EventHandler(this.filterConsultant_button_Click);
+            // 
+            // filterConsultant_textBox
+            // 
+            this.filterConsultant_textBox.Location = new System.Drawing.Point(494, 7);
+            this.filterConsultant_textBox.Name = "filterConsultant_textBox";
+            this.filterConsultant_textBox.Size = new System.Drawing.Size(100, 20);
+            this.filterConsultant_textBox.TabIndex = 20;
+            // 
+            // filterConsultant_comboBox
+            // 
+            this.filterConsultant_comboBox.FormattingEnabled = true;
+            this.filterConsultant_comboBox.Items.AddRange(new object[] {
+            "№ Консультанта",
+            "Имя",
+            "Телефон",
+            "Адрес",
+            "Стаж",
+            "Характеристика"});
+            this.filterConsultant_comboBox.Location = new System.Drawing.Point(367, 7);
+            this.filterConsultant_comboBox.Name = "filterConsultant_comboBox";
+            this.filterConsultant_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.filterConsultant_comboBox.TabIndex = 19;
+            // 
+            // deletaConsultant_button
+            // 
+            this.deletaConsultant_button.Location = new System.Drawing.Point(190, 6);
+            this.deletaConsultant_button.Name = "deletaConsultant_button";
+            this.deletaConsultant_button.Size = new System.Drawing.Size(75, 23);
+            this.deletaConsultant_button.TabIndex = 18;
+            this.deletaConsultant_button.Text = "Удалить";
+            this.deletaConsultant_button.UseVisualStyleBackColor = true;
+            this.deletaConsultant_button.Click += new System.EventHandler(this.deletaConsultant_button_Click);
+            // 
+            // searchConsultant_textBox
+            // 
+            this.searchConsultant_textBox.Location = new System.Drawing.Point(84, 7);
+            this.searchConsultant_textBox.Name = "searchConsultant_textBox";
+            this.searchConsultant_textBox.Size = new System.Drawing.Size(100, 20);
+            this.searchConsultant_textBox.TabIndex = 17;
+            // 
+            // searchConsultant_button
+            // 
+            this.searchConsultant_button.Location = new System.Drawing.Point(5, 6);
+            this.searchConsultant_button.Name = "searchConsultant_button";
+            this.searchConsultant_button.Size = new System.Drawing.Size(75, 23);
+            this.searchConsultant_button.TabIndex = 16;
+            this.searchConsultant_button.Text = "Поиск";
+            this.searchConsultant_button.UseVisualStyleBackColor = true;
+            this.searchConsultant_button.Click += new System.EventHandler(this.searchConsultant_button_Click);
             // 
             // splitContainer3
             // 
@@ -482,17 +704,13 @@
             this.contractsDataGridView2.Size = new System.Drawing.Size(1005, 212);
             this.contractsDataGridView2.TabIndex = 0;
             // 
-            // contractsBindingSource1
-            // 
-            this.contractsBindingSource1.DataMember = "Contracts";
-            this.contractsBindingSource1.DataSource = this.consultantBindingSource;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.correctionToolStripMenuItem,
-            this.reportingToolStripMenuItem});
+            this.reportingToolStripMenuItem,
+            this.sQLToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1049, 24);
@@ -506,19 +724,20 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fileToolStripMenuItem.Text = "Файл";
+            this.fileToolStripMenuItem.Visible = false;
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // correctionToolStripMenuItem
             // 
             this.correctionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
-            this.changeToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+            this.обновитьToolStripMenuItem});
             this.correctionToolStripMenuItem.Name = "correctionToolStripMenuItem";
             this.correctionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.correctionToolStripMenuItem.Text = "Правка";
@@ -531,48 +750,36 @@
             this.консультантToolStripMenuItem,
             this.контрактToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.addToolStripMenuItem.Text = "Добавить";
             // 
             // автомобильToolStripMenuItem
             // 
             this.автомобильToolStripMenuItem.Name = "автомобильToolStripMenuItem";
-            this.автомобильToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.автомобильToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.автомобильToolStripMenuItem.Text = "Автомобиль";
             this.автомобильToolStripMenuItem.Click += new System.EventHandler(this.автомобильToolStripMenuItem_Click);
             // 
             // клиентToolStripMenuItem
             // 
             this.клиентToolStripMenuItem.Name = "клиентToolStripMenuItem";
-            this.клиентToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.клиентToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.клиентToolStripMenuItem.Text = "Клиент";
             this.клиентToolStripMenuItem.Click += new System.EventHandler(this.клиентToolStripMenuItem_Click);
             // 
             // консультантToolStripMenuItem
             // 
             this.консультантToolStripMenuItem.Name = "консультантToolStripMenuItem";
-            this.консультантToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.консультантToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.консультантToolStripMenuItem.Text = "Консультант";
             this.консультантToolStripMenuItem.Click += new System.EventHandler(this.консультантToolStripMenuItem_Click);
             // 
             // контрактToolStripMenuItem
             // 
             this.контрактToolStripMenuItem.Name = "контрактToolStripMenuItem";
-            this.контрактToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.контрактToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.контрактToolStripMenuItem.Text = "Контракт";
             this.контрактToolStripMenuItem.Click += new System.EventHandler(this.контрактToolStripMenuItem_Click);
-            // 
-            // changeToolStripMenuItem
-            // 
-            this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.changeToolStripMenuItem.Text = "Изменить";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deleteToolStripMenuItem.Text = "Удалить";
             // 
             // reportingToolStripMenuItem
             // 
@@ -586,133 +793,74 @@
             // statisticsToolStripMenuItem
             // 
             this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.statisticsToolStripMenuItem.Text = "Статистика";
+            this.statisticsToolStripMenuItem.Click += new System.EventHandler(this.statisticsToolStripMenuItem_Click);
             // 
             // contractsToolStripMenuItem
             // 
+            this.contractsToolStripMenuItem.Enabled = false;
             this.contractsToolStripMenuItem.Name = "contractsToolStripMenuItem";
-            this.contractsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contractsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.contractsToolStripMenuItem.Text = "Контракты";
+            this.contractsToolStripMenuItem.Click += new System.EventHandler(this.contractsToolStripMenuItem_Click);
             // 
-            // fliterClient_button
+            // sQLToolStripMenuItem
             // 
-            this.fliterClient_button.Location = new System.Drawing.Point(559, 6);
-            this.fliterClient_button.Name = "fliterClient_button";
-            this.fliterClient_button.Size = new System.Drawing.Size(94, 23);
-            this.fliterClient_button.TabIndex = 15;
-            this.fliterClient_button.Text = "Фильтрация";
-            this.fliterClient_button.UseVisualStyleBackColor = true;
-            this.fliterClient_button.Click += new System.EventHandler(this.fliterClient_button_Click);
+            this.sQLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.запросToolStripMenuItem});
+            this.sQLToolStripMenuItem.Name = "sQLToolStripMenuItem";
+            this.sQLToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.sQLToolStripMenuItem.Text = "SQL";
             // 
-            // filterClient_textBox
+            // запросToolStripMenuItem
             // 
-            this.filterClient_textBox.Location = new System.Drawing.Point(441, 8);
-            this.filterClient_textBox.Name = "filterClient_textBox";
-            this.filterClient_textBox.Size = new System.Drawing.Size(100, 20);
-            this.filterClient_textBox.TabIndex = 14;
+            this.запросToolStripMenuItem.Name = "запросToolStripMenuItem";
+            this.запросToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.запросToolStripMenuItem.Text = "Запрос";
+            this.запросToolStripMenuItem.Click += new System.EventHandler(this.запросToolStripMenuItem_Click);
             // 
-            // filterClient_comboBox
+            // обновитьToolStripMenuItem
             // 
-            this.filterClient_comboBox.FormattingEnabled = true;
-            this.filterClient_comboBox.Items.AddRange(new object[] {
-            "№ Клиента",
-            "Имя",
-            "Номер телефона",
-            "Адрес",
-            "Кредитная карта",
-            "Права",
-            "Характеристика"});
-            this.filterClient_comboBox.Location = new System.Drawing.Point(297, 6);
-            this.filterClient_comboBox.Name = "filterClient_comboBox";
-            this.filterClient_comboBox.Size = new System.Drawing.Size(121, 21);
-            this.filterClient_comboBox.TabIndex = 13;
+            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.обновитьToolStripMenuItem.Text = "Обновить";
+            this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
             // 
-            // dleteCustomer_button
+            // contractsBindingSource
             // 
-            this.dleteCustomer_button.Location = new System.Drawing.Point(209, 6);
-            this.dleteCustomer_button.Name = "dleteCustomer_button";
-            this.dleteCustomer_button.Size = new System.Drawing.Size(75, 23);
-            this.dleteCustomer_button.TabIndex = 12;
-            this.dleteCustomer_button.Text = "Удалить";
-            this.dleteCustomer_button.UseVisualStyleBackColor = true;
-            this.dleteCustomer_button.Click += new System.EventHandler(this.dleteCustomer_button_Click);
+            this.contractsBindingSource.DataMember = "Contracts";
+            this.contractsBindingSource.DataSource = this.carBindingSource;
             // 
-            // searchCustomer_textBox
+            // contractsBindingSource2
             // 
-            this.searchCustomer_textBox.Location = new System.Drawing.Point(91, 8);
-            this.searchCustomer_textBox.Name = "searchCustomer_textBox";
-            this.searchCustomer_textBox.Size = new System.Drawing.Size(100, 20);
-            this.searchCustomer_textBox.TabIndex = 11;
+            this.contractsBindingSource2.DataMember = "Contracts";
+            this.contractsBindingSource2.DataSource = this.customerBindingSource;
             // 
-            // searchCustomer_button
+            // contractsBindingSource1
             // 
-            this.searchCustomer_button.Location = new System.Drawing.Point(10, 6);
-            this.searchCustomer_button.Name = "searchCustomer_button";
-            this.searchCustomer_button.Size = new System.Drawing.Size(75, 23);
-            this.searchCustomer_button.TabIndex = 10;
-            this.searchCustomer_button.Text = "Поиск";
-            this.searchCustomer_button.UseVisualStyleBackColor = true;
-            this.searchCustomer_button.Click += new System.EventHandler(this.searchCustomer_button_Click);
+            this.contractsBindingSource1.DataMember = "Contracts";
+            this.contractsBindingSource1.DataSource = this.consultantBindingSource;
             // 
-            // filterConsultant_button
+            // createContract_button
             // 
-            this.filterConsultant_button.Location = new System.Drawing.Point(561, 6);
-            this.filterConsultant_button.Name = "filterConsultant_button";
-            this.filterConsultant_button.Size = new System.Drawing.Size(94, 23);
-            this.filterConsultant_button.TabIndex = 21;
-            this.filterConsultant_button.Text = "Фильтрация";
-            this.filterConsultant_button.UseVisualStyleBackColor = true;
-            this.filterConsultant_button.Click += new System.EventHandler(this.filterConsultant_button_Click);
+            this.createContract_button.Location = new System.Drawing.Point(900, 7);
+            this.createContract_button.Name = "createContract_button";
+            this.createContract_button.Size = new System.Drawing.Size(111, 23);
+            this.createContract_button.TabIndex = 12;
+            this.createContract_button.Text = "Создать контракт";
+            this.createContract_button.UseVisualStyleBackColor = true;
+            this.createContract_button.Click += new System.EventHandler(this.createContract_button_Click);
             // 
-            // filterConsultant_textBox
+            // createContract1_button
             // 
-            this.filterConsultant_textBox.Location = new System.Drawing.Point(443, 8);
-            this.filterConsultant_textBox.Name = "filterConsultant_textBox";
-            this.filterConsultant_textBox.Size = new System.Drawing.Size(100, 20);
-            this.filterConsultant_textBox.TabIndex = 20;
-            // 
-            // filterConsultant_comboBox
-            // 
-            this.filterConsultant_comboBox.FormattingEnabled = true;
-            this.filterConsultant_comboBox.Items.AddRange(new object[] {
-            "№ Консультанта",
-            "Имя",
-            "Телефон",
-            "Адрес",
-            "Стаж",
-            "Характеристика"});
-            this.filterConsultant_comboBox.Location = new System.Drawing.Point(299, 6);
-            this.filterConsultant_comboBox.Name = "filterConsultant_comboBox";
-            this.filterConsultant_comboBox.Size = new System.Drawing.Size(121, 21);
-            this.filterConsultant_comboBox.TabIndex = 19;
-            // 
-            // deletaConsultant_button
-            // 
-            this.deletaConsultant_button.Location = new System.Drawing.Point(211, 6);
-            this.deletaConsultant_button.Name = "deletaConsultant_button";
-            this.deletaConsultant_button.Size = new System.Drawing.Size(75, 23);
-            this.deletaConsultant_button.TabIndex = 18;
-            this.deletaConsultant_button.Text = "Удалить";
-            this.deletaConsultant_button.UseVisualStyleBackColor = true;
-            this.deletaConsultant_button.Click += new System.EventHandler(this.deletaConsultant_button_Click);
-            // 
-            // searchConsultant_textBox
-            // 
-            this.searchConsultant_textBox.Location = new System.Drawing.Point(93, 8);
-            this.searchConsultant_textBox.Name = "searchConsultant_textBox";
-            this.searchConsultant_textBox.Size = new System.Drawing.Size(100, 20);
-            this.searchConsultant_textBox.TabIndex = 17;
-            // 
-            // searchConsultant_button
-            // 
-            this.searchConsultant_button.Location = new System.Drawing.Point(12, 6);
-            this.searchConsultant_button.Name = "searchConsultant_button";
-            this.searchConsultant_button.Size = new System.Drawing.Size(75, 23);
-            this.searchConsultant_button.TabIndex = 16;
-            this.searchConsultant_button.Text = "Поиск";
-            this.searchConsultant_button.UseVisualStyleBackColor = true;
-            this.searchConsultant_button.Click += new System.EventHandler(this.searchConsultant_button_Click);
+            this.createContract1_button.Location = new System.Drawing.Point(894, 6);
+            this.createContract1_button.Name = "createContract1_button";
+            this.createContract1_button.Size = new System.Drawing.Size(111, 23);
+            this.createContract1_button.TabIndex = 19;
+            this.createContract1_button.Text = "Создать контракт";
+            this.createContract1_button.UseVisualStyleBackColor = true;
+            this.createContract1_button.Click += new System.EventHandler(this.createContract1_button_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -972,6 +1120,16 @@
             this.dataGridViewTextBoxColumn41.HeaderText = "Дата подписания контракта";
             this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
             // 
+            // createContract2_button
+            // 
+            this.createContract2_button.Location = new System.Drawing.Point(896, 6);
+            this.createContract2_button.Name = "createContract2_button";
+            this.createContract2_button.Size = new System.Drawing.Size(111, 23);
+            this.createContract2_button.TabIndex = 25;
+            this.createContract2_button.Text = "Создать контракт";
+            this.createContract2_button.UseVisualStyleBackColor = true;
+            this.createContract2_button.Click += new System.EventHandler(this.createContract2_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -991,7 +1149,6 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.carDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -1000,7 +1157,6 @@
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.customerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.splitContainer3.Panel1.ResumeLayout(false);
@@ -1009,9 +1165,11 @@
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.consultantDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantBindingSource)).EndInit();
@@ -1047,8 +1205,6 @@
         private System.Windows.Forms.ToolStripMenuItem reportingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statisticsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contractsToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -1114,6 +1270,21 @@
         private System.Windows.Forms.Button deletaConsultant_button;
         private System.Windows.Forms.TextBox searchConsultant_textBox;
         private System.Windows.Forms.Button searchConsultant_button;
+        private System.Windows.Forms.Button xmlCar_button;
+        private System.Windows.Forms.Button sqlQueryCar_button;
+        private System.Windows.Forms.Button updateCar_button;
+        private System.Windows.Forms.Button xmlCustomer_button;
+        private System.Windows.Forms.Button sqlQueryCustomer_button;
+        private System.Windows.Forms.Button updateCustomer_button;
+        private System.Windows.Forms.Button xmlConsultant_button;
+        private System.Windows.Forms.Button sqlQueryConsultant_button;
+        private System.Windows.Forms.Button updateConsultant_button;
+        private System.Windows.Forms.ToolStripMenuItem sQLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запросToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
+        private System.Windows.Forms.Button createContract_button;
+        private System.Windows.Forms.Button createContract1_button;
+        private System.Windows.Forms.Button createContract2_button;
     }
 }
 
