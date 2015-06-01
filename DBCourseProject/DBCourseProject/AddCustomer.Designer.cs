@@ -1,7 +1,25 @@
-﻿namespace DBCourseProject
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace DBCourseProject
 {
-    partial class AddCustomer
+    partial class AddCustomer : Form
     {
+
+        private Form1 mainForm;
+        public AddCustomer(Form1 _mainForm)
+        {
+            InitializeComponent();
+            mainForm = _mainForm;
+        }
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -61,6 +79,7 @@
             this.cancel_button.TabIndex = 28;
             this.cancel_button.Text = "Cancel";
             this.cancel_button.UseVisualStyleBackColor = true;
+            this.cancel_button.Click += new System.EventHandler(this.cancel_button_Click);
             // 
             // ok_button
             // 
@@ -70,6 +89,7 @@
             this.ok_button.TabIndex = 27;
             this.ok_button.Text = "OK";
             this.ok_button.UseVisualStyleBackColor = true;
+            this.ok_button.Click += new System.EventHandler(this.ok_button_Click);
             // 
             // characteristics_textBox
             // 

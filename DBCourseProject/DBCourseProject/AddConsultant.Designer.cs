@@ -1,7 +1,24 @@
-﻿namespace DBCourseProject
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace DBCourseProject
 {
-    partial class AddConsultant
+    partial class AddConsultant : Form
     {
+
+        private Form1 mainForm;
+        public AddConsultant(Form1 _mainForm)
+        {
+            InitializeComponent();
+            mainForm = _mainForm;
+        }
         /// <summary>
         /// Required designer variable.
         /// </summary>
